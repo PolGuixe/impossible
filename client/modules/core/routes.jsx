@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './components/main_layout.jsx';
-import ItemList from '../items/containers/ItemList.jsx';
+import ItemList from '../items/components/item_list.jsx';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -11,7 +11,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'items.list',
     action() {
       mount(MainLayoutCtx, {
-        content: () => ()
+        content: () => (<ItemList />)
       });
     }
   });
