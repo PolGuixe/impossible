@@ -22,7 +22,8 @@
     "eslint-plugin-react": "3.15.x",
     "mocha": "2.x.x",
     "react-addons-test-utils": "^0.14.6",
-    "sinon": "1.17.x"
+    "sinon": "1.17.x",
+    "sinon-chai": "^2.8.0"
   },
   "dependencies": {
     "domready": "^1.0.8",
@@ -30,6 +31,13 @@
     "react-dom": "^0.14.6",
     "mantra-core": "^1.2.0",
     "react-mounter": "^1.0.0"
+  },
+  "scripts":{
+    "lint":"eslint ./libs ./client ./server --ext .js --ext .jsx",
+    "lintfix":"npm run lint -- --fix",
+    "testonly": "mocha client/**/tests/**/*.js --compilers js:babel-core/register",
+    "test": "npm run testonly",
+    "test-watch": "npm run testonly -- --watch --watch-extensions js,jsx"
   },
   "private": true
 }
