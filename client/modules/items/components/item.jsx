@@ -1,7 +1,9 @@
 import React from 'react';
-import {Row, Col, Panel, Glyphicon} from 'react-bootstrap';
+import {Row, Col, Panel, Glyphicon, Input} from 'react-bootstrap';
 
-const Item = ({content=() => null}) =>(
+const Item = ({
+  content = () => null
+}) => (
   <Col md={4}>
     <Panel>
       <Row>
@@ -9,10 +11,21 @@ const Item = ({content=() => null}) =>(
           <h2>Thing to do</h2>
         </Col>
         <Col xs={2}>
-          <a href="/edit"><Glyphicon glyph="pencil"></Glyphicon></a>
+          <a href="/edit">
+            <Glyphicon glyph="pencil"></Glyphicon>
+          </a>
         </Col>
       </Row>
-      <p>Some details about the thing that needs to be done</p>
+      <Row>
+        <Col xs={12}>
+          <p>Some details about the thing that needs to be done</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <Input type="checkbox" label="Complete?"/>
+        </Col>
+      </Row>
     </Panel>
   </Col>
 );
