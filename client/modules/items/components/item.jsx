@@ -1,11 +1,19 @@
 import React from 'react';
-import {Col, Panel} from 'react-bootstrap';
+import {Row, Col, Panel, Glyphicon} from 'react-bootstrap';
 
 const Item = ({content=() => null}) =>(
   <Col md={4}>
-    <h2>Thing to do</h2>
-    <br></br>
-    <p>Some details about the thing that needs to be done.</p>
+    <Panel>
+      <Row>
+        <Col xs={10}>
+          <h2>Thing to do</h2>
+        </Col>
+        <Col xs={2}>
+          <a href="/edit"><Glyphicon glyph="pencil"></Glyphicon></a>
+        </Col>
+      </Row>
+      <p>Some details about the thing that needs to be done</p>
+    </Panel>
   </Col>
 );
 
