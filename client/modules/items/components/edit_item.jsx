@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Panel, Input, ButtonInput, Glyphicon} from 'react-bootstrap';
+import DateTimeField from 'react-bootstrap-datetimepicker';
 
 const EditItem = ({ content = () => null}) => (
    <Col xs={12} sm={6} smOffset={3}>
@@ -9,6 +10,7 @@ const EditItem = ({ content = () => null}) => (
        <form>
          <Input type="text" placeholder="Name" />
          <Input type="textarea" placeholder="Description" />
+         <DateTimeField />
          <ButtonInput bsStyle="primary" type="submit" value="Save Item" />
        </form>
      </Panel>
