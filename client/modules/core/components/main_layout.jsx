@@ -9,11 +9,6 @@ const Layout = ({content = () => null}) => (
         <PageHeader>Impossible List</PageHeader>
       </Col>
     </Row>
-    <Row>
-      <Col xs={12} sm={6}>
-        <ItemProgress />
-      </Col>
-    </Row>
       {content()}
   </Grid>
 );
