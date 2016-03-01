@@ -1,6 +1,8 @@
 import React from 'react';
 import Item from './item.jsx';
 import {Row, Col, Glyphicon} from 'react-bootstrap';
+import ItemProgress from './item_progress.jsx';
+
 
 const ItemList = ({content = () => null }) => (
   <Row>
