@@ -4,9 +4,7 @@ import {Col,Panel,Input,ButtonInput, Glyphicon} from 'react-bootstrap';
 class NewCategory extends React.Component {
   render() {
     const {error} = this.props;
-    console.log(this);
-
-
+    
     return (
       <Col xs={12} sm={6} smOffset={3}>
         <Panel>
