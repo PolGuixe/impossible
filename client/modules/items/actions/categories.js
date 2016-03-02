@@ -1,5 +1,5 @@
 export default {
-  create({Meteor, LocalState}, myParam) {
+  create({Meteor, LocalState, FlowRouter}, name) {
     if(!name){
       return LocalState.set('CREATE_CATEGORY_ERROR', 'Category name is required.');
     }
@@ -10,7 +10,7 @@ export default {
         return LocalState.set('SAVING_ERROR', err.message);
       }
     });
-    FlowRouter.go('categories');
+    FlowRouter.go('/categories');
   },
 
   // e.g. clear local state
