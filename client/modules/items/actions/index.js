@@ -3,7 +3,9 @@
 
 // XXX: Here, we can automatically generate this file based on the
 // actions inside this directory.
+import categories from "./categories";
 const actions = {
+	categories();
   // ACTION
 };
 
