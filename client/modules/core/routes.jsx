@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './components/main_layout.jsx';
-import ItemList from '../items/components/item_list.jsx';
+import ItemList from '../items/containers/item_list';
 import EditItem from '../items/components/edit_item.jsx';
 import NewUser from '../users/containers/new_user';
 import Login from '../users/containers/login';

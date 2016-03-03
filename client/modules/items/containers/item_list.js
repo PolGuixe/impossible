@@ -1,14 +1,11 @@
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
-import Component from '../components/item_list.jsx';
+import ItemList from '../components/item_list.jsx';
 
-export const composer = ({context, clearErrors, $2}, onData) => {
+export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('$3', postId).ready()) {
-    //const options = {
-    //  sort: {createdAt: -1}
-    //};
-    const records = Collections.$4.find({$2}, options).fetch();
-    onData(null, {records});
+  if (Meteor.subscribe('item.list').ready()) {
+    const items = Collections.Items.find().fetch();
+    onData(null, {items});
   } else {
     onData();
   }
@@ -17,4 +14,4 @@ export const composer = ({context, clearErrors, $2}, onData) => {
 export default composeAll(
   composeWithTracker(composer),
   useDeps()
-)(Component);
+)(ItemList);
