@@ -16,7 +16,7 @@ const ItemList = ({items}) => (
         <a href="/edit"><Glyphicon glyph="plus"></Glyphicon> New Item</a>
       </Col>
       {items.map(item => (
-        <Item key={item._id} />
+        <Item key={item._id} item={item} />
       ))}
     </Row>
   </Row>

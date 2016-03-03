@@ -3,7 +3,7 @@ import ItemList from '../components/item_list.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('item.list').ready()) {
+  if (Meteor.subscribe('items.list').ready()) {
     const items = Collections.Items.find().fetch();
     onData(null, {items});
   } else {

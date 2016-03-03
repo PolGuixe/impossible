@@ -1,22 +1,37 @@
-import {
-  useDeps, composeWithTracker, composeAll
-} from 'mantra-core';
-import Component from '../components/edit_item.jsx';
+import { useDeps, composeWithTracker, composeAll } from 'mantra-core';
+import EditItem from '../components/edit_item.jsx';
 
-export const composer = ({context, clearErrors, $2}, onData) => {
-  const {Meteor, Collections} = context();
-  if (Meteor.subscribe('$3', postId).ready()) {
-    //const options = {
-    //  sort: {createdAt: -1}
-    //};
-    const records = Collections.$4.find({$2}, options).fetch();
-    onData(null, {records});
-  } else {
-    onData();
+export const composer = ({ context, clearErrors, itemId }, onData) => {
+  const { LocalState, Meteor, Collections } = context();
+  const error = LocalState.get('CREATE_ITEM_ERROR');
+  if (itemId !== undefined) {
+    if (Meteor.subscribe('items.single', itemId).ready()) {
+      const item = Collections.Items.findOne(itemId);
+      onData(null, { item, error });
+    } else {
+      const item = Collections.Items.findOne(itemId);
+      if(item){
+        onData(null,{item});
+      }else{
+        onData();
+      }
+    }
+  }else{
+    onData(null,{error});
   }
+
+  //clearErrors when unmounting the component
+  return clearErrors;
 };
+
+export const depsMapper = (context, actions) => ({
+  create: actions.items.create,
+  edit: actions.items.edit,
+  clearErrors: actions.items.clearErrors,
+  context: () => context
+});
 
 export default composeAll(
   composeWithTracker(composer),
-  useDeps()
-)(Component);
+  useDeps(depsMapper)
+)(EditItem);

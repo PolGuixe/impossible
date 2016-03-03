@@ -3,7 +3,7 @@ import {mount} from 'react-mounter';
 
 import MainLayout from './components/main_layout.jsx';
 import ItemList from '../items/containers/item_list';
-import EditItem from '../items/components/edit_item.jsx';
+import EditItem from '../items/containers/edit_item';
 import NewUser from '../users/containers/new_user';
 import Login from '../users/containers/login';
 import CategoryList from '../items/containers/category_list';
@@ -21,7 +21,16 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  FlowRouter.route('/edit',{
+  FlowRouter.route('/edit/:itemId',{
+    name:'items.edit',
+    action({itemId}){
+      mount(MainLayoutCtx,{
+        content: () => (<EditItem itemId={itemId} />)
+      });
+    }
+  });
+
+  FlowRouter.route('/edit/',{
     name:'items.edit',
     action(){
       mount(MainLayoutCtx,{

@@ -12,4 +12,10 @@ export default function () {
   Meteor.publish('categories.list', function () {
     return Categories.find();
   });
+
+  Meteor.publish('items.single', function (itemId) {
+    check(itemId, String);
+    const selector = {_id: itemId};
+    return Items.find(selector);
+  });
 }
