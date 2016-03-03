@@ -4,7 +4,7 @@ import ItemList from '../components/item_list.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('items.list').ready()) {
-    const items = Collections.Items.find().fetch();
+    const items = Collections.Items.find({},{sort:{due: 1}}).fetch();
     onData(null, {items});
   } else {
     onData();
