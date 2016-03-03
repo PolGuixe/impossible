@@ -4,7 +4,7 @@ import moment from 'moment';
 
 class Item extends React.Component {
   render() {
-    const {item, currentDate} = this.props;
+    const {item} = this.props;
     const style = item.due < Date.now() ? {'border':'solid 1px red'} : {'border':'solid 1px #e3e3e3'};
     return (
       <Col xs={4}>
