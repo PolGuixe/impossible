@@ -1,27 +1,38 @@
-import {Meteor} from 'meteor/meteor';
-import {check} from 'meteor/check';
+import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 
-import {Categories, Items} from '/lib/collections';
+import { Categories, Items } from '/lib/collections';
 
-export default function () {
+export default function() {
   Meteor.methods({
-    'items.create'(name, description, due) {
+    'items.create' (name, description, due) {
       check(name, String);
       check(description, String);
       check(due, String);
 
       const createdAt = new Date();
-      const item = {name, description, due, createdAt};
+      const item = { name, description, due, createdAt };
       Items.insert(item);
     }
   });
 
   Meteor.methods({
-    'categories.create'(name) {
+    'items.markComplete' (complete, itemId) {
+      check(complete, Boolean);
+      check(itemId, String);
+
+      Items.update(itemId, {
+        $set: {complete: complete}
+      });
+    }
+  });
+
+  Meteor.methods({
+    'categories.create' (name) {
       check(name, String);
 
       const createdAt = new Date();
-      const category = {name, createdAt};
+      const category = { name, createdAt };
 
       Categories.insert(category);
     }
