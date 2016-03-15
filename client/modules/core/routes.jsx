@@ -6,8 +6,6 @@ import ItemList from '../items/containers/item_list';
 import EditItem from '../items/containers/edit_item';
 import NewUser from '../users/containers/new_user';
 import Login from '../users/containers/login';
-import CategoryList from '../items/containers/category_list';
-import NewCategory from '../items/containers/new_category';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -64,24 +62,5 @@ export default function (injectDeps, {FlowRouter}) {
     FlowRouter.go('/');
     }
   });
-
-  FlowRouter.route('/categories', {
-    name: 'categories.list',
-    action() {
-      mount(MainLayoutCtx, {
-        content: () => (<CategoryList />)
-      });
-    }
-  });
-
-  FlowRouter.route('/categories/new/', {
-    name: 'categories.new',
-    action() {
-      mount(MainLayoutCtx, {
-        content: () => (<NewCategory />)
-      });
-    }
-  });
-
 
 }
