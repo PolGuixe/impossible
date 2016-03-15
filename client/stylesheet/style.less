@@ -1,0 +1,467 @@
+//-----------------------------
+//Style Cluster
+//-----------------------------
+//Import basic bootstrap
+@import "./bootstrap/bootstrap-raw.import.less";
+//Import fonts
+@import url("http://fonts.googleapis.com/css?family=Lora:400,400italic|Work+Sans:300,400,500,600");
+@font-face {
+  font-family: 'Unibody8';
+  src: url(/fonts/Unibody8Pro-RegularSmallCaps.otf);
+}
+//Variables
+@import "variables-zetoff.import.less";
+// Bootstrap mixins
+@import "custom/mixins.import.less";
+// No needed, so far..
+// @import "custom/syntax.import.less";
+// @import "custom/docs.import.less";
+// Extended Bootstrap components
+@import "custom/type-custom.import.less";
+@import "custom/alerts-custom.import.less";
+@import "custom/buttons-custom.import.less";
+@import "custom/nav-heading.import.less";
+@import "custom/navbar-utilities.import.less";
+// Custom theme components
+@import "custom/icons.import.less";
+@import "custom/utilities-spacer.import.less";
+@import "custom/text-inherit.import.less";
+@import "custom/nav-bordered.import.less";
+@import "custom/buttons-outline.import.less";
+@import "custom/buttons-radius.import.less";
+@import "custom/forms-custom.import.less";
+@import "custom/container-custom.import.less";
+@import "custom/block.import.less";
+@import "custom/navbar-transparent.import.less";
+@import "custom/carousel-light.import.less";
+@import "custom/callouts.import.less";
+@import "custom/featured-list.import.less";
+@import "custom/zoom.import.less";
+@import "custom/text-ribbon.import.less";
+@import "custom/iconlist.import.less";
+@import "custom/panels-bold.import.less";
+@import "custom/statcard.import.less";
+@import "custom/pull-quote.import.less";
+@import "custom/stage.import.less";
+
+//Non-theme-components
+@import "custom/mixins/triangle.import.less";
+
+
+//h3 font-family overide
+h3 {
+  font-family: 'Unibody8', @font-family-sans-serif;
+  line-height: 1.2;
+}
+//General helpers
+.stage {
+  margin-top: @navbar-height;
+  min-height: calc(~"100vh - "(@navbar-height + @footer-height));
+  position: relative;
+  &:not(.personalize-model) {
+    padding-top: @navbar-margin-bottom;
+  }
+}
+.text-center-sm {
+  @media(max-width: 991px) {
+    text-align: center;
+  }
+}
+img {
+  width: 100%;
+  height: auto;
+}
+img.width60{
+  width: 60%;
+  height: auto;
+}
+.pre-line {
+  white-space: pre-line;
+}
+.social-buttons {
+  a {
+    text-transform: none;
+    text-decoration: none;
+  }
+  .btn-icon {
+    background-color: @brand-primary;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    font-size: 25px;
+  }
+}
+
+.btn-secondary-outline{
+  .button-outline-variant(@brand-secondary,@brand-primary);
+}
+.btn {
+  border-radius: 50px;
+}
+.btn:not(.btn-default) {
+  border-color: transparent !important;
+}
+/* general block overrrides */
+@media (max-width: 768px) {
+  .block .lead {
+    line-height: 1.3;
+  }
+  .block h3 {
+    line-height: 1.15;
+  }
+}
+/* general inverse overrides */
+.block-inverse .text-muted {
+  color: rgba(255, 255, 255, .7);
+}
+.block-inverse .block-bg-img {
+  background-color: transparent;
+}
+/* general btn overrides */
+.btn-lg {
+  font-size: 18px;
+}
+.block-secondary .btn-lg {
+  width: 100%;
+}
+.btn-lg:not(.btn-block) {
+  padding: 12px 50px;
+}
+@media (min-width: 768px) {
+  .btn-lg:not(.btn-block) {
+    width: auto;
+  }
+}
+/* ie10+ */
+@media (min-width: 768px) {
+  .align-center {
+    display: flex;
+    align-items: center;
+  }
+}
+.align-center-xs {
+  //works for xs screens
+  display: flex;
+  align-items: center;
+}
+
+.no-padding {
+    padding: 0;
+}
+.no-margin {
+  margin: 0;
+}
+.no-margin-top {
+  margin-top: 0;
+}
+.no-margin-right {
+  margin-right: 0;
+}
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+.no-margin-left {
+  margin-left: 0;
+}
+.no-margin-horizontal {
+  .no-margin-right;
+  .no-margin-left;
+}
+.no-margin-vertical {
+  .no-margin-top;
+  .no-margin-bottom;
+}
+
+.margin-top-grid {
+  margin-top: @grid-gutter-width/2;
+}
+.margin-right-grid {
+  margin-right: @grid-gutter-width/2;
+}
+.margin-bottom-grid {
+  margin-bottom: @grid-gutter-width/2;
+}
+.margin-left-grid {
+  margin-left: @grid-gutter-width/2;
+}
+.margin-vertical-grid {
+  .margin-top-grid;
+  .margin-bottom-grid;
+}
+.margin-horizontal-grid {
+  .margin-left-grid;
+  .margin-right-grid;
+}
+
+.padding-top-grid {
+  padding-top: @grid-gutter-width/2;
+}
+.padding-right-grid {
+  padding-right: @grid-gutter-width/2;
+}
+.padding-bottom-grid {
+  padding-bottom: @grid-gutter-width/2;
+}
+.padding-left-grid {
+  padding-left: @grid-gutter-width/2;
+}
+.padding-vertical-grid {
+  .padding-top-grid;
+  .padding-bottom-grid;
+}
+.padding-horizontal-grid {
+  .padding-left-grid;
+  .padding-right-grid;
+}
+
+/* note: this is a hack for ios iframe for bootstrap themes shopify page */
+/* this chunk of css is not part of the toolkit :) */
+/* …curses ios, etc… */
+@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    width: 1px;
+    min-width: 100%;
+    *width: 100%;
+  }
+  #stage {
+    height: 1px;
+    overflow: auto;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/* SHOP */
+
+#main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  // top: 50px;
+  /*overflow: auto;*/
+  /* May need to change this*/
+  /*padding-bottom: -2em;*/
+  /* Negative Padding, needs to be the same height as the footer */
+}
+
+.notApp {
+  padding-top: 10px;
+}
+
+#canvasContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#canvasRender {
+  width: 100% !important;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+// ------ UI ------
+#buttonsWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  display: block;
+}
+#buttonsWrapper .row {
+  width: 300px;
+}
+.ui-images {
+  margin-bottom: 4px;
+}
+#buttonsWrapper .row i  {
+  width: 46px;
+  height: auto;
+  cursor: pointer;
+}
+#buttonsWrapper .row .ui-text-item {
+  width: 46px;
+  text-align: center;
+  font-size: 0.7em;
+  display: inline-block;
+}
+#buttonsWrapper .row .ui-image-item:hover {
+  background-color: @brand-highlight;
+  border-radius: 100%;
+}
+#buttonsWrapper .row .ui-image-item {
+  width: 46px;
+  padding-bottom: 8.5px;
+  padding-top: 8.5px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  background-color: @brand-primary;
+  border-radius: 100%;
+}
+
+// ------ ACTIONS UI ------
+#actionButtonsWrapper {
+  /*margin-left: auto;*/
+  /*margin-right: 10px;*/
+  width: calc(~"100% - 10px");
+  position: absolute;
+  top: 30px;
+  display: block;
+}
+#actionButtonsWrapper .row {
+  /*width: 100px;*/
+}
+#actionButtonsWrapper .row i  {
+  /*width: 46px;*/
+  height: auto;
+  cursor: pointer;
+}
+#actionButtonsWrapper .row .ui-image-item:hover {
+  background-color: none;
+  border-radius: 23px;
+}
+#actionButtonsWrapper .row .ui-image-item {
+  /*width: 46px;*/
+  float: right;
+  clear: right;
+  margin-right: 20px;
+  margin-bottom: 8.5px;
+  padding-bottom: 8.5px;
+  padding-top: 8.5px;
+  padding-left: 8.5px;
+  padding-right: 8.5px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  background-color: none;
+  border-radius: 23px;
+
+  a{
+    line-height: 1.4em;
+    i{
+      font-size: 1.2em;
+    }
+  }
+}
+
+
+// ------ SLIDERS ------
+.noUi-target, .noUi-background, .noUi-horizontal, .noUi-handle {
+  margin-bottom: 16px;
+}
+.noUi-target {
+    border-radius: 2px;
+    border: 1px solid @gray-light;
+    box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+}
+.noUi-background {
+    background: @gray-light;
+    box-shadow: inset 0 1px 1px @gray-light;
+}
+.noUi-horizontal {
+    height: 4px;
+}
+.noUi-target {
+    position: relative;
+}
+.noUi-horizontal .noUi-handle {
+    width: 28px;
+    height: 28px;
+    left: -14px;
+    top: -12px; //-6px
+}
+.noUi-handle {
+    border: 1px solid @brand-highlight;
+    border-radius: 100%;
+    background: @brand-highlight;
+    cursor: default;
+    box-shadow: inset 0 0 1px @brand-highlight;
+}
+.noUi-handle {
+    position: relative;
+    z-index: 1;
+}
+.noUi-handle:before, .noUi-handle:after {
+    background: @brand-highlight;
+}
+
+#actionButtonsWrapper, #buttonsWrapper {
+  pointer-events: none;
+}
+.noUi-handle, .ui-image-item {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+
+.map-container {
+  width:100%;
+  max-width: 100%;
+  height: 500px;
+}
+.model3d-container {
+  // max-height: calc(~"95vh - "@navbar-height);
+  // min-height: 500px;
+  width: 100%;
+}
+#designDescription {
+  line-height: 20px;
+}
+
+.loading-template,
+.no-results-template,
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.error-actions .btn {
+    margin-right: 10px;
+}
+
+.loader {
+  margin: 0 auto;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+}
+
+#dummyImportForm {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#importSubmitButton {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}

@@ -20,8 +20,9 @@ reactive-dict
 audit-argument-checks
 check
 random
-twbs:bootstrap
 accounts-password
 msavin:mongol
 standard-minifier-css
 standard-minifier-js
+huttonr:bootstrap3
+less
